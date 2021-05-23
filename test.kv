@@ -1,0 +1,184 @@
+<Gerenciador>:
+    Tela1:
+        name:'tela1'
+    Tela2:
+        name: 'tela2'
+
+
+<Tela1>:
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:'wppapp.jpg'
+
+    BoxLayout:
+        padding:50
+        orientation: 'vertical'
+
+
+        AnchorLayout:
+
+            anchor_x: 'center'
+            anchor_y: 'top'
+
+            canvas.before:
+                Color:
+                    rgb: [.25,.2,.245,.2000]
+                Rectangle:
+                    id:ret
+                    pos: self.center_x/2,self.center_y/1.4
+                    size: self.center_x, self.center_y*1.2
+
+            Image:
+                padding:0.5
+                source:'capa.png'
+                size_hint:0.5,0.5
+
+    FloatLayout:
+        size:
+            300, 300
+
+        Label:
+            text:'Slow Dancing in...'
+            font_size:
+                25
+            pos:
+                0, -20
+        Label:
+            text:"Joji"
+            font_size:
+                15
+            pos:
+                0, -45
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 50
+
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+            Button:
+                border:0,0,0,0
+                background_normal:'previous.png'
+                size_hint:0.5,0.2
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+
+            Button:
+                border:0,0,0,0
+                background_normal: 'play-button.png'
+                id: pausa
+                state: 'normal'
+                size_hint:0.5,0.2
+                on_release: root.playMusic()
+
+
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+
+            Button:
+                border:0,0,0,0
+                background_normal:'forward.png'
+                size_hint:0.5,0.2
+                on_press:
+                    root.stopMusic()
+                    root.manager.transition.direction='left'
+                    root.manager.current = 'tela2'
+
+<Tela2>:
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:'wppapp3.jpg'
+
+    BoxLayout:
+        padding:50
+        orientation: 'vertical'
+
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'top'
+
+            canvas.before:
+                Color:
+                    rgb: [.25,.2,.245,.2000]
+                Rectangle:
+                    pos: self.center_x/2,self.center_y/1.4
+                    size: self.center_x, self.center_y*1.2
+
+            Image:
+                padding:0.5
+                source:'capa2.jpg'
+                size_hint:0.5,0.5
+
+    FloatLayout:
+        size:
+            300, 300
+        Label:
+            text:'Heather'
+            font_size:
+                25
+            pos:
+                0, -20
+        Label:
+            text:"Conan Gray"
+            font_size:
+                15
+            pos:
+                0, -45
+
+    BoxLayout:
+        orientation: 'horizontal'
+        padding: 50
+
+
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'bottom'
+            Button:
+                id:'anterior'
+                border:0,0,0,0
+                background_normal:'previous.png'
+                size_hint:0.5,0.2
+                on_press:
+                    root.manager.transition.direction='right'
+                    root.manager.current='tela1'
+                    root.stopMusic()
+
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'bottom'
+
+            Button:
+                border:0,0,0,0
+                background_normal: 'play-button.png'
+                id: pausa
+                state: 'normal'
+                size_hint:0.5,0.2
+                on_release: root.playMusic()
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'bottom'
+
+            Button:
+                border:0,0,0,0
+                background_normal:'forward.png'
+                size_hint:0.5,0.2
+
+
+
+
+
+
+
+
